@@ -4,21 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NguyenDinhMinh_Bigschool.Models;
+using System.Data.Entity;
+using NguyenDinhMinh_Bigschool.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace NguyenDinhMinh_Bigschool.Controllers
 {
-    public class CourseViewModel : Controller
+    public class CoursesController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
-        public CourseViewModel()
+        public CoursesController()
         {
             _dbContext = new ApplicationDbContext();
         }
         // GET: Courses
-        public ActionResult Create()
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CourseViewModel viewModel)
         {
-            var viewModel = new CourseViewModel();
-            return View(viewModel);
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }
+            var course = new Course
+            {
+                LecturerId = User.Identity.GetUserId(),
+                DateTime = viewModel.GetDateTime(),
+                CategoryId = viewModel.Category,
+                Place = viewModel.Place
+            };
+            _dbContext.Courses.Add(course);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index","Home");
+        }
+        // GET: Courses
+        public ActionResult Index()
+        {
+
+            return View();
         }
     }
 }

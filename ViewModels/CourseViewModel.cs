@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NguyenDinhMinh_Bigschool.Models;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace NguyenDinhMinh_Bigschool.ViewModels
 {
     public class CourseViewModel
     {
+        [Required]
         public string Place { get; set; }
+        [Required]
+        [FutureDate]
         public string Date { get; set; }
+        [Required]
         public string Time { get; set; }
+        [Required]
         public byte Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public DateTime GetDateTime()

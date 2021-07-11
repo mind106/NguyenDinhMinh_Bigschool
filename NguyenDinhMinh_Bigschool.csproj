@@ -186,9 +186,18 @@
     <Compile Include="Migrations\202107050244232_PopulateCategoryTable.Designer.cs">
       <DependentUpon>202107050244232_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107101510031_AddNamecolumnToApplivationUser.cs" />
+    <Compile Include="Migrations\202107101510031_AddNamecolumnToApplivationUser.Designer.cs">
+      <DependentUpon>202107101510031_AddNamecolumnToApplivationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107110547137_AddAttendance.cs" />
+    <Compile Include="Migrations\202107110547137_AddAttendance.Designer.cs">
+      <DependentUpon>202107110547137_AddAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -196,6 +205,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
+    <Compile Include="ViewModels\FutureDate.cs" />
+    <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -257,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Attendances\" />
+    <Folder Include="Views\Coures\" />
+    <Folder Include="Views\CourseViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -280,6 +294,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107050244232_PopulateCategoryTable.resx">
       <DependentUpon>202107050244232_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107101510031_AddNamecolumnToApplivationUser.resx">
+      <DependentUpon>202107101510031_AddNamecolumnToApplivationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107110547137_AddAttendance.resx">
+      <DependentUpon>202107110547137_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
