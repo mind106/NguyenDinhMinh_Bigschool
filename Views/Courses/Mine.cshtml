@@ -25,9 +25,9 @@
                     @course.Category.Name
                 </span>
             </div>
-            <div class="action">
+            <div class="abc">
                 <a href="@Url.Action("Edit","Courses", new { id = course.Id})">Edit</a>
-                <a href="" class="js-cancel-course" data-corners-id="@course.Id">Cancel</a>
+                <a href="" class="js-cancel-course" data-course-id="@course.Id">Cancel</a>
             </div>
         </li>
     }
@@ -43,11 +43,11 @@
                 bootbox.confirm("Are you sure to cancel???",
                     function () {
                         $.ajax({
-                            url: "/api/course/" + link.attr("data-coures-id"),
-                            method: "DLETE"
+                            url: "/api/courses/" + link.attr("data-course-id"),
+                            method: "DELETE"
                         })
                             .done(function () {
-                                link.parent("li").fadeOut(function () {
+                                link.parents("li").fadeOut(function () {
                                     $(this).remove();
                                 });
                             })

@@ -21,12 +21,13 @@ namespace NguyenDinhMinh_Bigschool.Controllers
         public IHttpActionResult Attend(AttendanceDTO attendanceDto)
         {
             var UserId = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(async => async.AttendeeId == UserId && async.CourseId == attendanceDto.CourseId))
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == UserId && a.CourseId == attendanceDto.CourseId))
+                //async => async.AttendeeId == UserId && async.CourseId == attendanceDto.CourseId)
                 return BadRequest("The Attendance already exitsts!!!");
             var attendance = new Attendance
             {
                 CourseId = attendanceDto.CourseId,
-                AttendeeId = User.Identity.GetUserId()
+                AttendeeId = UserId
             };
 
             _dbContext.Attendances.Add(attendance);

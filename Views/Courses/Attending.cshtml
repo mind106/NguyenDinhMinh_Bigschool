@@ -4,6 +4,8 @@
     ViewBag.Title = "Home Page";
 }
 
+
+
 <ul class="course">
     @foreach (var course in Model.UpcomingCourse)
     {
@@ -36,35 +38,36 @@
             </div>
         </li>
     }
-
-    @section scripts
-        {
-        <script>
-            $(document).ready(function () {
-                $(".js-toggle-attendance").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/attendaces", { courseId: button.attr("data-course-id") })
-                        .done(function () {
-                            button
-                                .removeClass("btn-default")
-                                .addClass("btn-info")
-                                .text("Going");
-                        })
-                        .fail(function () {
-                            alert("Something failed!");
-                        });
-                    $("js.toggle-folow").click(function (e) {
-                        var button = $(e.target);
-                        $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                            .done(function () {
-                                button.text("Following");
-                            })
-                            .fail(function () {
-                                alert("Something failed");
-                            })
+</ul>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendaces", { courseId: button.attr("data-course-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going")
                     })
-                });
+                            .fail(function () {
+                        alert("Something failed!");
+                    });
             });
-        </script>
-</ul>  
-    
+            $("js.toggle-folow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following")
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+        });
+
+    </script>
+}
+
+

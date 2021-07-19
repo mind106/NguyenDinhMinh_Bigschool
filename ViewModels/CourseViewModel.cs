@@ -14,7 +14,7 @@ namespace NguyenDinhMinh_Bigschool.ViewModels
         [Required]
         public string Place { get; set; }
         [Required]
-        [FutureDate]
+        //[FutureDate]
         public string Date { get; set; }
         [Required]
         public string Time { get; set; }
